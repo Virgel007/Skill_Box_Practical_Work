@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        batch_versioned_data=true:
+        order_updates=true:
+        order_inserts=true:
+        jdbc:
+          batch_size=: 100000
+    show-sql: false
+    hibernate.ddl-auto: create

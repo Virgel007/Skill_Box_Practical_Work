@@ -1,0 +1,40 @@
+<configuration>
+    <appender name="QUERIES_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/queries.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismathc>DENY</onMismathc>
+        </filter>
+    </appender>
+    <appender name="ERRORS_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/errors.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismathc>DENY</onMismathc>
+        </filter>
+    </appender>
+    <appender name="QUERIES" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismathc>DENY</onMismathc>
+        </filter>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="QUERIES_FILE" level="info" />
+        <appender-ref ref="ERRORS_FILE" level="error" />
+        <appender-ref ref="QUERIES" level="debug" />
+    </root>
+</configuration>
